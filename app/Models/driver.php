@@ -23,4 +23,9 @@ class driver extends Model
     {
         return $this->belongsTo(User::class);
     }
+
+    public function Route()
+    {
+        return $this->belongsTo(route::class);
+    }
 }

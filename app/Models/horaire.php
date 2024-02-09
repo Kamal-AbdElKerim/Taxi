@@ -10,8 +10,8 @@ class horaire extends Model
     use HasFactory;
 
     protected $fillable = [
-        'start_city',
-        'end_city',
+        'date',
+        
       
     ];
 }

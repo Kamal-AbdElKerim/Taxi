@@ -82,67 +82,40 @@
                             </nav>
                             <!-- Start Items Area -->
                             <div class="my-items">
-                                <!-- Start Item List Title -->
-                                <div class="item-list-title">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <p>Job Title</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>start_city</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>end_city</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <p>Action</p>
-                                        </div>
-                                    </div>
+                                <form action="{{ route('add_route') }}" method="POST" >
+                                    @csrf
+                                <div class="row">
+                                    <div class="col-12 col-md-3">
+                                <label for="inputPassword5"  class="form-label">start city</label>
+                                <select class="form-select mb-5" name='start_city' aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    @foreach ($citys->cities as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                  </select>
                                 </div>
-                             
-                                <!-- Start Single List -->
-                                @foreach ($routes as $item)
-                                    
-                              
-                                <div class="single-item-list">
-                                    <div class="row align-items-center">
-                                        <div class="col-lg-5 col-md-5 col-12">
-                                            <div class="item-image">
-                                                <img src="{{URL::asset('front/assets/images/my-items/my-item1.png')}}" alt="#">
-                                                <div class="content">
-                                                    <h3 class="title"><a href="javascript:void(0)">route</a></h3>
-                                                    <span class="price">$800</span>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>{{ $item->start_city }}</p>
-                                        </div>
-                                        <div class="col-lg-2 col-md-2 col-12">
-                                            <p>{{ $item->end_city }}</p>
-                                        </div>
-                                        <div class="col-lg-3 col-md-3 col-12 align-right">
-                                            <ul class="action-btn">
-                                                <li><a href="{{ route('add_route',$item->id) }}"><i class="fa-solid fa-check"></i></a></li>
-                                             
-                                            </ul>
-                                        </div>
-                                    </div>
+                                <div class="col-12 col-md-3 mb-4">
+                                    <label for="inputPassword5"   class="form-label">end city</label>
+                                    <select class="form-select" name='end_city' aria-label="Default select example">
+                                    <option selected>Open this select menu</option>
+                                    @foreach ($citys->cities as $item)
+                                    <option value="{{ $item }}">{{ $item }}</option>
+                                    @endforeach
+                                  </select>
                                 </div>
-                                <!-- End Single List -->
-                                @endforeach
+                                <div class="col-12 col-md-3 mb-4">
+                                    <label for="inputPassword5" class="form-label">date</label>
+                                    <input type="date" name="date" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+
+                                </div>
+                                <div class="col-12 col-md-3 pt-4">
+                                 
+                                   <button type="submit" name="submit" id="" class="btn btn-primary" >ajouter</button>
+                                </div>
+                            </form>
+                                </div>
                           
-                                <!-- Pagination -->
-                                <div class="pagination left">
-                                    <ul class="pagination-list">
-                                        <li><a href="javascript:void(0)">1</a></li>
-                                        <li class="active"><a href="javascript:void(0)">2</a></li>
-                                        <li><a href="javascript:void(0)">3</a></li>
-                                        <li><a href="javascript:void(0)">4</a></li>
-                                        <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
-                                    </ul>
-                                </div>
-                                <!--/ End Pagination -->
+                       
                             </div>
                             <!-- End Items Area -->
                         </div>

@@ -30,7 +30,7 @@ Route::group(
       Route::get('/profile_edit', [DriverController::class, 'profile'])->name('profile');
       Route::post('Store_profile', [DriverController::class, 'Store_profile'])->name('Store_profile');
       Route::get('/home_driver', [DriverController::class, 'index'])->name('dashboard_driver');
-      Route::get('/add_route/{id}', [DriverController::class, 'add_route'])->name('add_route');
+      Route::post('/add_route', [DriverController::class, 'add_route'])->name('add_route');
 
       
   });

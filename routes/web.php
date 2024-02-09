@@ -67,6 +67,7 @@ Route::group(
 
         Route::get('/', [SearcheController::class, 'index'])->name('index_searche');
         Route::post('/search_forrm', [SearcheController::class, 'search'])->name('search_forrm');
+        Route::get('/affiche_card', [SearcheController::class, 'affiche_card'])->name('affiche_card');
 
 
 

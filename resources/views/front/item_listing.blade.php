@@ -108,12 +108,12 @@
                         </div>
                         <!-- End Single Widget -->
                         <!-- Start Single Widget -->
-                        <div class="single-widget banner">
+                        {{-- <div class="single-widget banner">
                             <h3>Advertisement</h3>
                             <a href="javascript:void(0)">
                                 <img src="assets/images/banner/banner.jpg" alt="#">
                             </a>
-                        </div>
+                        </div> --}}
                         <!-- End Single Widget -->
                     </div>
                 </div>
@@ -155,22 +155,36 @@
                                                     <div class="row align-items-center">
                                                         <div class="col-lg-5 col-md-7 col-12">
                                                             <div class="image">
-                                                                <a href="item-details.html"><img src="assets/images/items-tab/item-2.jpg" alt="#"></a>
+                                                                <a href="javascript:void(0)"><img src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  height="240px" alt="#"></a>
                                                                 <i class=" cross-badge lni lni-bolt"></i>
                                                                 <span class="flat-badge sale">Sale</span>
                                                             </div>
                                                         </div>
                                                         <div class="col-lg-7 col-md-5 col-12">
                                                             <div class="content">
-                                                                <a href="javascript:void(0)" class="tag">Others</a>
+                                                                <div class=" d-flex  justify-content-between ">
+                                                                <a href="javascript:void(0)" class="tag">driver : {{ $item->name }}</a>
+                                                                <a href="javascript:void(0)" class="tag">{{ $item->date }}</a>
+                                                            </div>
                                                                 <h3 class="title">
-                                                                    <a href="item-details.html">{{ $item->start_city }}</a>
+                                                                    <a href="javascript:void(0)"><i
+                                                                        class="lni lni-map-marker">
+                                                                    </i>{{ $item->start_city }}</a>
                                                                 </h3>
-                                                                <p class="location"><a href="javascript:void(0)"><i
+                                                                <h3 class="title">
+                                                                    <a href="javascript:void(0)"><i
+                                                                        class="lni lni-map-marker">
+                                                                    </i>{{ $item->end_city }}</a>
+                                                                </h3>
+                                                                {{-- <p class="location"><a href="javascript:void(0)"><i
                                                                             class="lni lni-map-marker">
-                                                                        </i>{{ $item->end_city }}</a></p>
+                                                                        </i>{{ $item->end_city }}</a></p> --}}
                                                                 <ul class="info">
-                                                                    <li class="price">$580.00</li>
+                                                                    @auth
+                                                                        
+                                                                
+                                                                    <li class="price"><a href="">buy</a></li>
+                                                                    @endauth
                                                                     <li class="like"><a href="javascript:void(0)"><i
                                                                                 class="lni lni-heart"></i></a>
                                                                     </li>
