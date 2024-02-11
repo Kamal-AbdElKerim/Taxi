@@ -13,6 +13,7 @@ class trips_of_driver extends Model
         'driver_id',
         'horaire_id',
         'start_time',
+        'num_reserv',
         'end_time',
       
         

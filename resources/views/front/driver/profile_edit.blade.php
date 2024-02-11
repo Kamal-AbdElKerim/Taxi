@@ -88,7 +88,7 @@
                                         <div class="col-lg-6 col-12">
                                             <div class="form-group">
                                                 <label>plate_number*</label>
-                                                <input name="plate_number" type="text" placeholder="Plate Number" value="{{ old('plate_number', $profile ? $profile->plate_number : '') }}">
+                                                <input name="plate_number" type="text" placeholder="Plate Number" value="{{ old('plate_number', $profile->plate_number ?? '' ) }}">
 
                                             </div>
                                         </div>

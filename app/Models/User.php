@@ -24,6 +24,7 @@ class User extends Authenticatable
         'role',
         'image',
     ];
+    protected $primaryKey = 'user_id';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -46,6 +47,11 @@ class User extends Authenticatable
     ];
 
     public function profile()
+    {
+        return $this->hasMany(driver::class);
+    }
+
+    public function driver()
     {
         return $this->hasMany(driver::class);
     }

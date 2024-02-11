@@ -4,6 +4,8 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SearcheController;
+use App\Http\Controllers\PassagerController;
+use App\Http\Controllers\ReservationController;
 use Mcamara\LaravelLocalization\Facades\LaravelLocalization;
 use App\Http\Controllers\Auth\AuthenticatedSessionController;
 
@@ -55,10 +57,14 @@ Route::group(
 
         Route::middleware(['auth', 'checkRole:Passager'])->group(function () {
             
-           
-        Route::get('/dashboard_Passager', function () {
-            return view('Dashboard.Passager.index');
-        })->name('dashboard_Passager');
+
+
+
+        Route::get('/dashboard_Passager', [PassagerController::class, 'dashboard'])->name('dashboard_Passager');
+        Route::get('/Profile', [PassagerController::class, 'Profile'])->name('Profile');
+        Route::post('/reservations/reserve', [ReservationController::class, 'reserve'])->name('reservations.reserve');
+
+
             
         });
 
@@ -68,6 +74,7 @@ Route::group(
         Route::get('/', [SearcheController::class, 'index'])->name('index_searche');
         Route::post('/search_forrm', [SearcheController::class, 'search'])->name('search_forrm');
         Route::get('/affiche_card', [SearcheController::class, 'affiche_card'])->name('affiche_card');
+        Route::post('/add_reservation', [ReservationController::class, 'add_reservation'])->name('add_reservation');
 
 
 

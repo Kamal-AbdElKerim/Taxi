@@ -71,7 +71,7 @@
                                             aria-label="Toggle navigation">{{ ' '.trans("Dashboard/main-Header_trans.Home") }}</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a href="category.html" aria-label="Toggle navigation">Categories</a>
+                                        <a href="{{ route('Profile') }}" aria-label="Toggle navigation">Profile</a>
                                     </li>
                                     <li class="nav-item">
                                        

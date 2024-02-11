@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\route;
 use App\Models\driver;
 use App\Models\horaire;
+use App\Models\reservation;
+use App\Models\trips_of_driver;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -25,28 +27,11 @@ class SearcheController extends Controller
     public function search(Request $request) {
         // Get input data from the request
     
-        // // Check if the credentials contain the required data
-        // if (isset($credentials['start_city']) && isset($credentials['end_city'])) { 
-        //     // Perform search in the "horaires" table
-        //     $results = route::where('start_city', $credentials['start_city'])
-        //                       ->where('end_city', $credentials['end_city'])
-        //                       ->get();
         $credentials = $request->only('start_city', 'end_city');
 
-        $results = Driver::join('routes', 'drivers.route_id', '=', 'routes.id')
-            ->join('users', 'drivers.user_id', '=', 'users.id')
-            ->join('trips_of_drivers', 'drivers.id', '=', 'trips_of_drivers.driver_id')
-            ->join('horaires', 'trips_of_drivers.horaire_id', '=', 'horaires.id')
-            ->select('routes.*', 'users.name','horaires.date')
-            ->where('routes.start_city', $credentials['start_city'])
-            ->where('routes.end_city', $credentials['end_city'])
-          
-            ->get();
-    
-        
-            session(['search_results' => $results]);
+        session(['search_results' => $credentials]);
 
-
+   
            
             return redirect()->route('affiche_card');
    
@@ -55,9 +40,18 @@ class SearcheController extends Controller
 
     public function affiche_card() {
        
-        $routes = session('search_results');
+        $credentials = session('search_results');
 
-    // dd($routes);
+        $routes = Driver::join('routes', 'drivers.route_id', '=', 'routes.id')
+        ->join('users', 'drivers.user_id', '=', 'users.user_id')
+        ->join('trips_of_drivers', 'drivers.id', '=', 'trips_of_drivers.driver_id')
+        ->join('horaires', 'trips_of_drivers.horaire_id', '=', 'horaires.id')
+        ->select('routes.start_city', 'routes.end_city', 'users.name', 'horaires.date', 'horaires.id', 'users.user_id')
+        ->where('routes.start_city', $credentials['start_city'])
+        ->where('routes.end_city', $credentials['end_city'])
+        ->where('trips_of_drivers.num_reserv', '<=', 4)
+        ->get();
+   
 
         if ($routes) {
            

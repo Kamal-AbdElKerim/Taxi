@@ -147,59 +147,26 @@
                                     <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
                                         aria-labelledby="nav-list-tab">
                                         <div class="row">
-                                            @foreach ($results as $item)
-                                                
-                                            <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="javascript:void(0)"><img src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  height="240px" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <div class=" d-flex  justify-content-between ">
-                                                                <a href="javascript:void(0)" class="tag">driver : {{ $item->name }}</a>
-                                                                <a href="javascript:void(0)" class="tag">{{ $item->date }}</a>
-                                                            </div>
-                                                                <h3 class="title">
-                                                                    <a href="javascript:void(0)"><i
-                                                                        class="lni lni-map-marker">
-                                                                    </i>{{ $item->start_city }}</a>
-                                                                </h3>
-                                                                <h3 class="title">
-                                                                    <a href="javascript:void(0)"><i
-                                                                        class="lni lni-map-marker">
-                                                                    </i>{{ $item->end_city }}</a>
-                                                                </h3>
-                                                                {{-- <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>{{ $item->end_city }}</a></p> --}}
-                                                                <ul class="info">
-                                                                    @auth
-                                                                        
-                                                                
-                                                                  
-                                                                        <form action="{{ route('add_reservation') }}" method="post">
-                                                                            @csrf
-                                                                            <input type="text"  name="horaire_id" value="{{ $item->id }}" style="display: none">
-                                                                            <input type="text"  name="driver_id" value="{{ $item->user_id }}" style="display: none">
-                                                                        <li class="price"><button type="submit" class="btn btn-primary">Buy</button></li>
-                                                                    </form>
-                                                                    @endauth
-                                                              
-                                                                </ul>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <!-- End Single Item -->
-                                            </div>
-                                            @endforeach
+                                            <!-- reservations.blade.php -->
+
+@foreach ($reservationsByDriver as $driverId => $driverReservations)
+<h2>Driver {{ $driverId }}</h2>
+@if (in_array($driverId, $fullyBookedDrivers))
+    <p>Fully Booked</p>
+@else
+    <ul>
+        @foreach ($driverReservations as $reservation)
+            <li>{{ $reservation->id }} - {{ $reservation->user_id }} - {{ $reservation->horaire_id }}</li>
+        @endforeach
+    </ul>
+    <form action="{{ route('reservations.reserve') }}" method="POST">
+        @csrf
+        <input type="hidden" name="driver_id" value="{{ $driverId }}">
+        <button type="submit">Reserve</button>
+    </form>
+@endif
+@endforeach
+
                                      
                                         </div>
                                         <div class="row">
