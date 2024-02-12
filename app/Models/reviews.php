@@ -13,6 +13,5 @@ class reviews extends Model
         'reservation_id',
         'rating',
         'comment',
-        'cancelled',
     ];
 }

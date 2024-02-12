@@ -34,25 +34,24 @@ class AuthenticatedSessionController extends Controller
             'image' => 'required',
             'role' => 'required|string',
         ]);
-        
-// dd($request);
-        $imageName = time().'.'.$request->image->extension();  
+
+        // dd($request);
+        $imageName = time() . '.' . $request->image->extension();
         $request->image->move(public_path('images'), $imageName);
         // dd($imageName);
 
         $user = User::create([
             'name' => $request->name,
             'email' => $request->email,
-            'image' => $imageName, 
+            'image' => $imageName,
             'password' => Hash::make($request->password),
             'role' => $request->role,
         ]);
 
 
-    
 
-       return redirect()->route('login');
 
+        return redirect()->route('login');
     }
 
     /**
@@ -87,10 +86,10 @@ class AuthenticatedSessionController extends Controller
         ])->withInput();
     }
 
- 
-  
 
-    public function destroy(Request $request ): RedirectResponse
+
+
+    public function destroy(Request $request): RedirectResponse
     {
         return $this->logout($request, 'web');
     }
@@ -111,8 +110,4 @@ class AuthenticatedSessionController extends Controller
 
         return redirect()->route('login');
     }
-
-
-   
-    
 }

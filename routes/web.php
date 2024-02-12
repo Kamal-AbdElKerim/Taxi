@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\ReviewsController;
 use App\Http\Controllers\SearcheController;
 use App\Http\Controllers\PassagerController;
 use App\Http\Controllers\ReservationController;
@@ -66,6 +67,7 @@ Route::group(
         Route::get('/Profile', [PassagerController::class, 'Profile'])->name('Profile');
         Route::post('/reservations/reserve', [ReservationController::class, 'reserve'])->name('reservations.reserve');
         Route::get('/delete_reserv/{id}', [ReservationController::class, 'delete_reserv'])->name('delete_reserv');
+        Route::post('/add_rating/{id}', [ReviewsController::class, 'add_rating'])->name('add_rating');
 
 
             

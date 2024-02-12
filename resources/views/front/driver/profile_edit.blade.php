@@ -101,22 +101,22 @@
                                         <div class="col-12 mb-5">
                                             <label>Status*</label>
                                             <select name="status" class="form-select" aria-label="Default select example">
-                                                <option value="Available" {{ $profile && $profile->status === 'Available' ? 'selected' : '' }}>Available</option>
-                                                <option value="En route" {{ $profile && $profile->status === 'En route' ? 'selected' : '' }}>En route</option>
-                                                <option value="Not available" {{ $profile && $profile->status === 'Not available' ? 'selected' : '' }}>Not available</option>
+                                                <option value="Available" {{ isset($profile) && $profile->status === 'Available' ? 'selected' : '' }}>Available</option>
+                                                <option value="En route" {{ isset($profile) && $profile->status === 'En route' ? 'selected' : '' }}>En route</option>
+                                                <option value="Not available" {{ isset($profile) && $profile->status === 'Not available' ? 'selected' : '' }}>Not available</option>
                                             </select>
                                         </div>
                                           <div class="col-12 mb-5">
                                             <label>Payment Method*</label>
                                             <select name="payment_method" class="form-select" aria-label="Default select example">
-                                                <option value="espèces" {{ old('payment_method', $profile ? $profile->payment_method : '') === 'espèces' ? 'selected' : '' }}>espèces</option>
-                                                <option value="carte" {{ old('payment_method', $profile ? $profile->payment_method : '') === 'carte' ? 'selected' : '' }}>carte</option>
+                                                <option value="espèces" {{ old('payment_method', isset($profile) ? $profile->payment_method : '') === 'espèces' ? 'selected' : '' }}>espèces</option>
+                                                <option value="carte" {{ old('payment_method', isset($profile) ? $profile->payment_method : '') === 'carte' ? 'selected' : '' }}>carte</option>
                                             </select>
                                         </div>
                                         <div class="col-12">
                                             <div class="form-group message">
                                                 <label>About You*</label>
-                                                <textarea name="description" placeholder="Enter about yourself">{{ old('description', $profile ? $profile->description : '') }}</textarea>
+                                                <textarea name="description" placeholder="Enter about yourself">{{ old('description', isset($profile) ? $profile->description : '') }}</textarea>
                                             </div>
                                         </div>
                                         <div class="col-12">

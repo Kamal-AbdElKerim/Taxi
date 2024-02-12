@@ -28,15 +28,16 @@ class DriverController extends Controller
               $id =Auth()->id();
              $horaires = driver::join('routes', 'drivers.route_id', '=', 'routes.id')
           
-              ->join('trips_of_drivers', 'trips_of_drivers.driver_id', '=', 'drivers.id')
+            ->join('trips_of_drivers', 'trips_of_drivers.driver_id', '=', 'drivers.id')
               ->join('taxis', 'drivers.id', '=', 'taxis.driver_id')
             //    ->join('horaires', 'reservations.horaire_id', '=', 'horaires.id')
-               ->select('drivers.*','routes.*','trips_of_drivers.*','taxis.*')
+               ->select('drivers.*','routes.*','taxis.*','trips_of_drivers.*')
                ->where('drivers.user_id',$id)
+               ->where('trips_of_drivers.end_time',null)
             
               ->get();
 
-            //    dd($horaires);
+            //  dd($horaires);
 
            
             return view("front.driver.profile_data",compact('route','horaires'));

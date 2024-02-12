@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('horaire_id');        
+            $table->unsignedBigInteger('num_reserv');        
             $table->time('start_time')->default(null);
             $table->time('end_time')->default(null);
 

@@ -43,7 +43,7 @@
                 <div class="col-lg-6 m-auto  col-md-8 offset-md-2 col-12">
                     <div class="form-head">
                         <h2  class="title">{{ trans("Dashboard/login_trans.Welcome") }}</h2>
-        
+                     
 
                         <h6 class="title">{{ trans("Dashboard/main-Header_trans.login") }}</h6>
                         <form method="POST" action="{{ route('login') }}">

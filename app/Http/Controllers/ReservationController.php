@@ -21,6 +21,7 @@ class ReservationController extends Controller
         'user_id' => auth()->id() ,
         'horaire_id' => $request->horaire_id ,
         'driver_id' =>  $request->driver_id  ,
+        'route_id' =>  $request->routes_id  ,
       
      ]);
 

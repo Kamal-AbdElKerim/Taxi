@@ -46,11 +46,13 @@ class SearcheController extends Controller
         ->join('users', 'drivers.user_id', '=', 'users.user_id')
         ->join('trips_of_drivers', 'drivers.id', '=', 'trips_of_drivers.driver_id')
         ->join('horaires', 'trips_of_drivers.horaire_id', '=', 'horaires.id')
-        ->select('routes.start_city', 'routes.end_city', 'users.name', 'horaires.date', 'horaires.id', 'users.user_id')
+        ->select('routes.start_city', 'routes.end_city','routes.id as routes_id', 'users.name', 'horaires.date', 'horaires.id', 'users.user_id')
         ->where('routes.start_city', $credentials['start_city'])
         ->where('routes.end_city', $credentials['end_city'])
         ->where('trips_of_drivers.num_reserv', '<=', 4)
         ->get();
+
+        // dd($routes);
    
 
         if ($routes) {

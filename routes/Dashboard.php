@@ -19,17 +19,20 @@ use App\Http\Controllers\Auth\AuthenticatedSessionController;
 |
 */
 
+
 Route::group(
   [
       'prefix' => LaravelLocalization::setLocale(),
       'middleware' => [ 'localeSessionRedirect', 'localizationRedirect', 'localeViewPath' ]
   ], function(){ 
 
-    Route::middleware(['auth', 'checkRole:driver'])->group(function () {
+
+    Route::middleware('auth')->group(function () {
+      Route::get('/home_driver', [DriverController::class, 'index'])->name('dashboard_driver');
+
 
       Route::get('/profile_edit', [DriverController::class, 'profile'])->name('profile');
       Route::post('Store_profile', [DriverController::class, 'Store_profile'])->name('Store_profile');
-      Route::get('/home_driver', [DriverController::class, 'index'])->name('dashboard_driver');
       Route::post('/add_route', [DriverController::class, 'add_route'])->name('add_route');
 
       

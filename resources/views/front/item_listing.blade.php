@@ -195,6 +195,7 @@
                                                                         <form action="{{ route('add_reservation') }}" method="post">
                                                                             @csrf
                                                                             <input type="text"  name="horaire_id" value="{{ $item->id }}" style="display: none">
+                                                                            <input type="text"  name="routes_id" value="{{ $item->routes_id }}" style="display: none">
                                                                             <input type="text"  name="driver_id" value="{{ $item->user_id }}" style="display: none">
                                                                         <li class="price"><button type="submit" class="btn btn-primary">Buy</button></li>
                                                                     </form>

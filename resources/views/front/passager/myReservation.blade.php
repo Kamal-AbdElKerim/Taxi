@@ -3,7 +3,53 @@
     Profile
 @endsection
 @section('style')
-    {{-- here style css --}}
+    <style>
+            .card {
+  max-width: 20rem;
+  background: #fff;
+  margin: 0 1rem;
+  padding: 1rem;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+  width: 100%;
+  border-radius: 0.5rem;
+}
+ 
+.star {
+  font-size: 5vh;
+  cursor: pointer;
+}
+ 
+.one {
+  color: rgb(255, 0, 0);
+}
+ 
+.two {
+  color: rgb(255, 106, 0);
+}
+ 
+.three {
+ 
+  color: rgb(149, 228, 12);
+
+}
+ 
+.four {
+    color: rgb(105, 187, 12);
+}
+ 
+.five {
+  color: rgb(24, 159, 14);
+}
+
+
+.disabled{
+  
+    padding: 8px 20px ;
+    /* margin: 4px; */
+  
+}
+
+    </style>
 @endsection
 
 
@@ -123,7 +169,19 @@
                                                 @if ($item->start_time === null)
                                                 <li><a href="{{ route('delete_reserv',$item->id ) }}"><i class="lni lni-trash"></i></a></li>
                                                 @elseif($item->end_time !== null)
-                                                <li><a href="{{ route('delete_reserv',$item->id ) }}">******</a></li>
+                                                <form action="{{ route('add_rating',$item->id) }}" method="post">
+                                                    @csrf
+                                                <div class="" id="f_star">
+                                                    <input class="form-control" type="text" name="comment" placeholder="add comment">
+                                                    <span onclick="gfg(1)" class="star">★</span>
+                                                    <span onclick="gfg(2)" class="star">★</span>
+                                                    <span onclick="gfg(3)" class="star">★</span>
+                                                    <span onclick="gfg(4)" class="star">★</span>
+                                                    <span onclick="gfg(5)" class="star">★</span>
+                                                 <div  id="output"></div>
+                                                 <button type="submit"  class="btn btn-primary" >done</button>
+                                                </div> 
+                                            </form>
 
                                                 @endif
                                             </ul>
@@ -186,5 +244,32 @@
     @endsection
 
     @section('script')
-        
+        <script>
+            let stars = 
+    document.getElementsByClassName("star");
+let output = 
+    document.getElementById("output");
+            function gfg(n) {
+    remove();
+    for (let i = 0; i < n; i++) {
+        if (n == 1) cls = "one";
+        else if (n == 2) cls = "two";
+        else if (n == 3) cls = "three";
+        else if (n == 4) cls = "four";
+        else if (n == 5) cls = "five";
+        stars[i].className = "star " + cls;
+    }
+    output.innerHTML = `<input type="text" id="num" name="rating"  value="${n}" style="display: none">`;
+    console.log(n)
+}
+ 
+// To remove the pre-applied styling
+function remove() {
+    let i = 0;
+    while (i < 5) {
+        stars[i].className = "star";
+        i++;
+    }
+}
+        </script>
     @endsection

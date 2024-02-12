@@ -86,7 +86,7 @@
                                     @csrf
                                 <div class="row">
                               
-                               @if (count($horaires) == 0)
+                               @if (count($horaires) == 0 ||$horaires[0]->end_time !== null)
                                    
                             
                                    
@@ -143,8 +143,7 @@
                                                 @if ($item->status === "En route")
 
                                                 <li><a href="{{ route('end_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>finish</a></li>
-                                                @elseif($item->status !== null)
-                                                <li><a href="javascript:void(0)">done</a></li>
+                              
 
                                                 @else
                                                 <li><a href="{{ route('start_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>go</a></li>
