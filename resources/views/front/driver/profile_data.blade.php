@@ -85,36 +85,78 @@
                                 <form action="{{ route('add_route') }}" method="POST" >
                                     @csrf
                                 <div class="row">
-                                    <div class="col-12 col-md-3">
-                                <label for="inputPassword5"  class="form-label">start city</label>
-                                <select class="form-select mb-5" name='start_city' aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    @foreach ($citys->cities as $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
-                                    @endforeach
-                                  </select>
+                              
+                               @if (count($horaires) == 0)
+                                   
+                            
+                                   
+                            
+                                <div class="col-12 col-md-3">
+                                    <label for="inputPassword5"  class="form-label">route</label>
+                                    <select class="form-select mb-5" name='id' aria-label="Default select example">
+                                        <option selected>Open this select menu</option>
+                                        @foreach ($route as $item)
+                                        <option value="{{ $item->id }}">{{ $item->start_city . ' ' . '=>' . ' ' . $item->end_city}}</option>
+                                        @endforeach
+                                      </select>
+                                    </div>
+                                    <div class="col-12 col-md-3 mb-4">
+                                        <label for="inputPassword5" class="form-label">date</label>
+                                        <input type="date" name="date" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+    
+                                    </div>
+                                    <div class="col-12 col-md-3 pt-4">
+                                     
+                                       <button type="submit" name="submit" id="" class="btn btn-primary" >ajouter</button>
+                                    </div>
+                                </form>
+                                @endif
+                              
+                             
+                            
+  
                                 </div>
-                                <div class="col-12 col-md-3 mb-4">
-                                    <label for="inputPassword5"   class="form-label">end city</label>
-                                    <select class="form-select" name='end_city' aria-label="Default select example">
-                                    <option selected>Open this select menu</option>
-                                    @foreach ($citys->cities as $item)
-                                    <option value="{{ $item }}">{{ $item }}</option>
-                                    @endforeach
-                                  </select>
-                                </div>
-                                <div class="col-12 col-md-3 mb-4">
-                                    <label for="inputPassword5" class="form-label">date</label>
-                                    <input type="date" name="date" id="inputPassword5" class="form-control" aria-describedby="passwordHelpBlock">
+                                @foreach ($horaires as $item)
+                                    
+                              
+                                <!-- Start Single List -->
+                                <div class="single-item-list">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-5 col-md-5 col-12">
+                                            <div class="item-image">
+                                                <img src="assets/images/my-items/my-item1.png" alt="#">
+                                                <div class="content">
+                                                    <h3 class="title"><a href="javascript:void(0)">Total :{{ $item->num_reserv }}</a></h3>
+                                                    <span class="price">status : {{ $item->status }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-12">
+                                            <p>{{ $item->start_city }}</p>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-12">
+                                            <p>{{ $item->end_city }}</p>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-12 align-right">
+                                            @if ($item->num_reserv == 5)
+                                            <ul class="action-btn">
+                                                @if ($item->status === "En route")
 
+                                                <li><a href="{{ route('end_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>finish</a></li>
+                                                @elseif($item->status !== null)
+                                                <li><a href="javascript:void(0)">done</a></li>
+
+                                                @else
+                                                <li><a href="{{ route('start_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>go</a></li>
+                                                @endif
+                                            </ul>  
+                                            @endif
+                                          
+                                        </div>
+                                    </div>
                                 </div>
-                                <div class="col-12 col-md-3 pt-4">
-                                 
-                                   <button type="submit" name="submit" id="" class="btn btn-primary" >ajouter</button>
-                                </div>
-                            </form>
-                                </div>
-                          
+                                <!-- End Single List -->
+                                @endforeach
                        
                             </div>
                             <!-- End Items Area -->

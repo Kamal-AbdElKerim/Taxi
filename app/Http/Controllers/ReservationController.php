@@ -40,7 +40,30 @@ class ReservationController extends Controller
         ]);
       }
 //    dd($driver);
-     return redirect()->back();
+       return redirect()->back()->with('success', 'Reservation has been successful.');
+
+
+    }
+
+    public function delete_reserv($id_reservation){
+
+      $Reservation = Reservation::where('id', $id_reservation)->first();
+      $horaire_id = $Reservation->horaire_id;
+      $Reservation->delete();
+      $driver = trips_of_driver::where('horaire_id', $horaire_id)->first();
+      $numReserv = $driver->num_reserv - 1;
+      $numReserv = max(0, $numReserv);
+
+
+      if ($driver) {
+        $driver->update([
+            'num_reserv' => $numReserv,
+        ]);
+      }
+
+      return redirect()->back()->with('success', 'Reservation has been successful.');
+
+
 
 
     }

@@ -117,7 +117,13 @@
                         <!-- End Single Widget -->
                     </div>
                 </div>
+              
                 <div class="col-lg-9 col-md-8 col-12">
+                    @if (session('success'))
+                    <div class="alert alert-success">
+                        {{ session('success') }}
+                    </div>
+                @endif
                     <div class="category-grid-list">
                         <div class="row">
                             <div class="col-12">
@@ -142,11 +148,13 @@
                                         </div>
                                     </div>
                                 </div>
+                                
                                 <div class="tab-content" id="nav-tabContent">
                                   
                                     <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
                                         aria-labelledby="nav-list-tab">
                                         <div class="row">
+                                            
                                             @foreach ($results as $item)
                                                 
                                             <div class="col-lg-12 col-md-12 col-12">

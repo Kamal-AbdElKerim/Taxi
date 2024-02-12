@@ -19,13 +19,13 @@ class PassagerController extends Controller
     //  ->join()
      ->join('users', 'users.user_id', '=', 'drivers.user_id')
      ->join('routes', 'drivers.route_id', '=', 'routes.id')
-    //  ->join('trips_of_drivers', 'horaires.id', '=', 'trips_of_drivers.horaire_id')
       ->join('horaires', 'reservations.horaire_id', '=', 'horaires.id')
-   ->select('reservations.cancelled','reservations.id', 'users.name','horaires.date','routes.start_city','routes.end_city')
+      ->join('trips_of_drivers', 'trips_of_drivers.horaire_id', '=', 'horaires.id')
+   ->select('reservations.cancelled','reservations.id', 'users.name','horaires.date','routes.start_city','routes.end_city','trips_of_drivers.*')
      ->where('reservations.user_id',$id)
    
      ->get();
-    //  dd($reservation);
+    //   dd($reservation);
         return view('front.passager.myReservation',compact('reservation'));
     }
 }

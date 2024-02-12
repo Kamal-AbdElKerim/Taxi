@@ -120,7 +120,12 @@
                                         </div>
                                         <div class="col-lg-3 col-md-3 col-12 align-right">
                                             <ul class="action-btn">
-                                                <li><a href="{{ $item->end_city }}"><i class="lni lni-trash"></i></a></li>
+                                                @if ($item->start_time === null)
+                                                <li><a href="{{ route('delete_reserv',$item->id ) }}"><i class="lni lni-trash"></i></a></li>
+                                                @elseif($item->end_time !== null)
+                                                <li><a href="{{ route('delete_reserv',$item->id ) }}">******</a></li>
+
+                                                @endif
                                             </ul>
                                         </div>
                                     </div>

@@ -95,7 +95,7 @@
                                         <div class="col-12">
                                             <div class="form-group upload-image">
                                                 <label>vehicle_type*</label>
-                                                <input name="vehicle_type" type="text" placeholder="vehicle_type" value="{{ old('vehicle_type', $profile ? $profile->vehicle_type : '') }}">
+                                                <input name="vehicle_type" type="text" placeholder="vehicle_type" value="{{ old('vehicle_type',  $profile->vehicle_type  ?? '') }}">
                                             </div>
                                         </div>
                                         <div class="col-12 mb-5">

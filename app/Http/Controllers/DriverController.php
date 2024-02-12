@@ -2,13 +2,15 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\taxi;
 use App\Models\User;
 use App\Models\route;
 use App\Models\driver;
 use App\Models\horaire;
-use App\Models\trips_of_driver;
-use App\Models\taxi;
+use App\Models\reservation;
 use Illuminate\Http\Request;
+use Carbon\Carbon;
+use App\Models\trips_of_driver;
 use Illuminate\Support\Facades\Auth;
 
 class DriverController extends Controller
@@ -16,12 +18,28 @@ class DriverController extends Controller
     public function index()
     {
              // Read JSON file
-             $json = file_get_contents(storage_path('app/cities.json'));
+            //  $json = file_get_contents(storage_path('app/cities.json'));
 
-             // Decode JSON data
-             $citys = json_decode($json);
+            //  // Decode JSON data
+            //  $citys = json_decode($json);
+
+        $route = route::all();
            
-            return view("front.driver.profile_data",compact('citys'));
+              $id =Auth()->id();
+             $horaires = driver::join('routes', 'drivers.route_id', '=', 'routes.id')
+          
+              ->join('trips_of_drivers', 'trips_of_drivers.driver_id', '=', 'drivers.id')
+              ->join('taxis', 'drivers.id', '=', 'taxis.driver_id')
+            //    ->join('horaires', 'reservations.horaire_id', '=', 'horaires.id')
+               ->select('drivers.*','routes.*','trips_of_drivers.*','taxis.*')
+               ->where('drivers.user_id',$id)
+            
+              ->get();
+
+            //    dd($horaires);
+
+           
+            return view("front.driver.profile_data",compact('route','horaires'));
      
     }
 
@@ -29,10 +47,7 @@ class DriverController extends Controller
     {
         // dd($request);
 
-        $route = Route::create([
-            'start_city' => $request->start_city,
-            'end_city' => $request->end_city
-        ]);
+   
 
         $horaire =  horaire::create([
             'date' => $request->date
@@ -42,7 +57,7 @@ class DriverController extends Controller
      
 
       
-        $lastInsertedRouteId = $route->id;
+     
         $lastInsertedhoraire = $horaire->id;
 
       
@@ -52,7 +67,7 @@ class DriverController extends Controller
      
       
       $driver->update([
-          'route_id' =>  $lastInsertedRouteId
+          'route_id' =>  $request->id
         
       ]);
 
@@ -121,5 +136,56 @@ class DriverController extends Controller
 
     }
     
+  
+     public function start_travle($horaire_id){
 
+        $driver = trips_of_driver::where('horaire_id', $horaire_id)->first();
+
+      if ($driver) {
+        $driver->update([
+            'start_time' => Carbon::now(),
+        ]);
+      }
+      $id =Auth()->id() ;
+      $driv = driver::where('user_id',$id )->first();
+      $taxi = taxi::where('driver_id',$driv->id )->first();
+
+      
+      
+      if ($taxi) {
+        $taxi->update([
+            'status' => 'En route',
+        ]);
+      }
+
+      return redirect()->back();
+
+          
+     }
+
+     public function end_travle($horaire_id){
+
+        $driver = trips_of_driver::where('horaire_id', $horaire_id)->first();
+
+      if ($driver) {
+        $driver->update([
+            'end_time' => Carbon::now(),
+        ]);
+      }
+      $id =Auth()->id() ;
+      $driv = driver::where('user_id',$id )->first();
+      $taxi = taxi::where('driver_id',$driv->id )->first();
+
+      
+      
+      if ($taxi) {
+        $taxi->update([
+            'status' => 'Available',
+        ]);
+      }
+
+      return redirect()->back();
+
+          
+     }
 }

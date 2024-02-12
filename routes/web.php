@@ -51,6 +51,8 @@ Route::group(
         Route::middleware(['auth', 'checkRole:driver'])->group(function () {
             
             Route::get('/dashboard', [DriverController::class, 'dashboard'])->name('dashboard');
+            Route::get('/start_travle/{id}', [DriverController::class, 'start_travle'])->name('start_travle');
+            Route::get('/end_travle/{id}', [DriverController::class, 'end_travle'])->name('end_travle');
 
             
         });
@@ -63,6 +65,7 @@ Route::group(
         Route::get('/dashboard_Passager', [PassagerController::class, 'dashboard'])->name('dashboard_Passager');
         Route::get('/Profile', [PassagerController::class, 'Profile'])->name('Profile');
         Route::post('/reservations/reserve', [ReservationController::class, 'reserve'])->name('reservations.reserve');
+        Route::get('/delete_reserv/{id}', [ReservationController::class, 'delete_reserv'])->name('delete_reserv');
 
 
             
