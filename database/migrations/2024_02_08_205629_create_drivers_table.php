@@ -19,7 +19,7 @@ return new class extends Migration
         
             $table->timestamps();
 
-            $table->foreign('user_id')->references('id')->on('users');
+            $table->foreign('user_id')->references('user_id')->on('users');
             $table->foreign('route_id')->references('id')->on('routes');
         });
     }

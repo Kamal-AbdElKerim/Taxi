@@ -10,13 +10,14 @@ class ReservationController extends Controller
 {
     public function add_reservation(Request $request)  {
         
-    //  dd($request);
+     
     $driver = trips_of_driver::where('horaire_id', $request->horaire_id)->first();
 
     if ($driver->num_reserv == 5) {
         return redirect()->back();
 
     }
+    // dd($request->routes_id);
      reservation::create([
         'user_id' => auth()->id() ,
         'horaire_id' => $request->horaire_id ,
@@ -46,10 +47,10 @@ class ReservationController extends Controller
 
     }
 
-    public function delete_reserv($id_reservation){
+    public function delete_reserv($horaire_id){
 
-      $Reservation = Reservation::where('id', $id_reservation)->first();
-      $horaire_id = $Reservation->horaire_id;
+      $Reservation = Reservation::where('horaire_id', $horaire_id)->first();
+      // dd($Reservation);
       $Reservation->delete();
       $driver = trips_of_driver::where('horaire_id', $horaire_id)->first();
       $numReserv = $driver->num_reserv - 1;

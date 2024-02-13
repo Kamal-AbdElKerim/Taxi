@@ -11,11 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('trips_of_driver', function (Blueprint $table) {
+        Schema::create('trips_of_drivers', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('driver_id');
             $table->unsignedBigInteger('horaire_id');        
-            $table->unsignedBigInteger('num_reserv');        
+            $table->unsignedBigInteger('num_reserv')->default(0);        
             $table->time('start_time')->default(null);
             $table->time('end_time')->default(null);
 

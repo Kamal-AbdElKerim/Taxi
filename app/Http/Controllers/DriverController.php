@@ -46,7 +46,6 @@ class DriverController extends Controller
 
     public function add_route(Request $request)
     {
-        // dd($request);
 
    
 
@@ -65,7 +64,8 @@ class DriverController extends Controller
       $id = auth()->id();
       $driver = Driver::where('user_id', $id)->first();
   
-     
+    //   dd($driver);
+
       
       $driver->update([
           'route_id' =>  $request->id
@@ -75,6 +75,8 @@ class DriverController extends Controller
       trips_of_driver::create([
         'driver_id' => $driver->id,
         'horaire_id' => $lastInsertedhoraire,
+        // 'start_time' => null,
+        // 'end_time' => null,
        
     ]);
       return redirect()->back();
@@ -85,8 +87,8 @@ class DriverController extends Controller
     public function profile() {
         $id = auth()->id();
         $driver = Driver::where('user_id', $id)->first();
-    
         if (!$driver) {
+            // dd($id);
 
             $newDriver = Driver::create([
                 'user_id' => $id

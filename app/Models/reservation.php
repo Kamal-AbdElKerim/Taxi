@@ -13,6 +13,7 @@ class reservation extends Model
         'user_id',
         'horaire_id',
         'driver_id',
+        'route_id',
         'cancelled',
     ];
 }

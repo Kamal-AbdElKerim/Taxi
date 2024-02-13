@@ -151,10 +151,11 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-5 col-md-5 col-12">
                                             <div class="item-image">
-                                                <img src="assets/images/my-items/my-item1.png" alt="#">
+                                                <img src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" alt="#">
                                                 <div class="content">
                                                     <h3 class="title"><a href="javascript:void(0)">driver :{{ $item->name }}</a></h3>
                                                     <span class="price">{{ $item->date }}</span>
+                                                    <span class="price">numéro de réservation : {{ $item->reservations_id }}</span>
                                                 </div>
                                             </div>
                                         </div>
@@ -167,12 +168,13 @@
                                         <div class="col-lg-3 col-md-3 col-12 align-right">
                                             <ul class="action-btn">
                                                 @if ($item->start_time === null)
-                                                <li><a href="{{ route('delete_reserv',$item->id ) }}"><i class="lni lni-trash"></i></a></li>
+                                                <li><a href="{{ route('delete_reserv',$item->horaire_id ) }}"><i class="lni lni-trash"></i></a></li>
                                                 @elseif($item->end_time !== null)
-                                                <form action="{{ route('add_rating',$item->id) }}" method="post">
+                                                <form action="{{ route('add_rating',$item->horaire_id) }}" method="post">
                                                     @csrf
                                                 <div class="" id="f_star">
-                                                    <input class="form-control" type="text" name="comment" placeholder="add comment">
+                                                    {{-- <input class="form-control" type="text" name="comment" placeholder="add comment"> --}}
+                                                    <textarea name="comment" placeholder="add comment"  cols="25" rows="2"></textarea>
                                                     <span onclick="gfg(1)" class="star">★</span>
                                                     <span onclick="gfg(2)" class="star">★</span>
                                                     <span onclick="gfg(3)" class="star">★</span>
