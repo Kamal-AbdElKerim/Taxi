@@ -67,6 +67,46 @@
             </div>
         </form>
         </div>
+
+        @if (isset($route))
+
+     <div class="search-form wow fadeInUp" data-wow-delay=".7s">
+        <h5 class="mb-5 text-white  ">Trajets Fréquents</h5>
+        <form action="{{ route('search_forrm') }}" method="post">
+            @csrf
+        <div class="row">
+       
+          
+         
+            <div class="col-lg-3 col-md-3 col-12 p-0">
+                <div class="search-input">
+                    <label for="location"><i class="lni lni-map-marker theme-color"></i></label>
+                    <select class="input_icone" name="start_city" id="location">
+                      
+                        <option value="{{ $route->start_city }}">{{ $route->start_city }}</option>
+                     
+                     
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-3 col-md-3 col-12 p-0">
+                <div class="search-input">
+                    <label for="location"><i class="lni lni-map-marker theme-color"></i></label>
+                    <select class="input_icone" name="end_city" id="location">
+                       
+                        <option value="{{ $route->end_city }}">{{ $route->end_city }}</option>
+                       
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-2 col-md-2 col-12 p-0">
+                <div class="search-btn button">
+                    <button type="submit" class="btn"><i class="lni lni-search-alt"></i> Search</button>
+                </div>
+            </div>
+        </form>
+        </div>
+        @endif
     </div>
     <!-- End Search Form -->
                     

@@ -16,13 +16,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">My Reserve</h1>
+                        <h1 class="page-title">My Trajets</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="javascript:void(0)">Home</a></li>
-                        <li>My Reserve</li>
+                        <li>My Trajets</li>
                     </ul>
                 </div>
             </div>
@@ -38,16 +38,16 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="{{URL::asset('front/assets/images/dashboard/user-image.jpg')}}" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
+                            <img src="{{ asset('images/' . $user['image']) }}" alt="#">
+                            <h3>{{ $user['name'] }}
+                                <span><a href="javascript:void(0)">{{ Str::limit($user['email'], 20) }}</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">
                             <ul>
                                 <li><a href="{{ route('profile') }}"><i class="lni lni-pencil-alt"></i> Edit Profile</a>
                                 </li>
-                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Reserve</a>
+                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Trajets</a>
                                 </li>
 
                             </ul>
@@ -63,7 +63,7 @@
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
                         <div class="dashboard-block mt-0">
-                            <h3 class="block-title">My Reserve</h3>
+                            <h3 class="block-title">My Trajets</h3>
                          
                             <!-- Start Items Area -->
                             <div class="my-items">

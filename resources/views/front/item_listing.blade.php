@@ -37,89 +37,35 @@
                     <div class="category-sidebar">
                         <!-- Start Single Widget -->
                         <div class="single-widget search">
-                            <h3>Search Ads</h3>
-                            <form action="#">
-                                <input type="text" placeholder="Search Here...">
-                                <button type="submit"><i class="lni lni-search-alt"></i></button>
+                            <h3>Search By Vehicle_type</h3>
+                            <form action="{{ route('affiche_card') }}" method="GET">
+                                <select name="vehicle_type" class="form-select" aria-label="Select vehicle type">
+                                    <option value="all" {{ request()->vehicle_type == 'all' ? 'selected' : '' }}>All</option>
+                                    @foreach ($results as $item)
+                                        <option value="{{ $item->vehicle_type }}" {{ request()->vehicle_type == $item->vehicle_type ? 'selected' : '' }}>
+                                            {{ $item->vehicle_type }}
+                                        </option>
+                                    @endforeach
+                                </select>
+                                <button type="submit">Filter</button>
                             </form>
                         </div>
                         <!-- End Single Widget -->
                         <!-- Start Single Widget -->
                         <div class="single-widget">
-                            <h3>All Categories</h3>
+                            <h3>Sort</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-dinner"></i> Hotel &
-                                        Travels<span>15</span></a>
+                                    <a href="{{ route('affiche_card', ['sort' => 'desc']) }}"><i class="lni lni-dinner"></i>sort by Reting</a>
                                 </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-control-panel"></i> Services
-                                        <span>20</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-bullhorn"></i> Marketing
-                                        <span>55</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-home"></i> Real Estate<span>35</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-bolt"></i> Electronics
-                                        <span>60</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-tshirt"></i> Dress & Clothing
-                                        <span>55</span></a>
-                                </li>
-                                <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-diamond-alt"></i> Jewelry & Accessories
-                                        <span>45</span></a>
-                                </li>
+                             
+                            
                             </ul>
                         </div>
                         <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        <div class="single-widget range">
-                            <h3>Price Range</h3>
-                            <input type="range" class="form-range" name="range" step="1" min="100"
-                                max="10000" value="10" onchange="rangePrimary.value=value">
-                            <div class="range-inner">
-                                <label>$</label>
-                                <input type="text" id="rangePrimary" placeholder="100" />
-                            </div>
-                        </div>
-                        <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        <div class="single-widget condition">
-                            <h3>Condition</h3>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault1">
-                                <label class="form-check-label" for="flexCheckDefault1">
-                                    All
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault2">
-                                <label class="form-check-label" for="flexCheckDefault2">
-                                    New
-                                </label>
-                            </div>
-                            <div class="form-check">
-                                <input class="form-check-input" type="checkbox" value="" id="flexCheckDefault3">
-                                <label class="form-check-label" for="flexCheckDefault3">
-                                    Used
-                                </label>
-                            </div>
-                        </div>
-                        <!-- End Single Widget -->
-                        <!-- Start Single Widget -->
-                        {{-- <div class="single-widget banner">
-                            <h3>Advertisement</h3>
-                            <a href="javascript:void(0)">
-                                <img src="assets/images/banner/banner.jpg" alt="#">
-                            </a>
-                        </div> --}}
-                        <!-- End Single Widget -->
+                  
+                     
+                    
                     </div>
                 </div>
 
@@ -172,7 +118,7 @@
                                                                                 src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                                                                                 height="240px" alt="#"></a>
                                                                         <i class=" cross-badge lni lni-bolt"></i>
-                                                                        <span class="flat-badge sale">Sale</span>
+                                                                        <span class="flat-badge sale">{{ $item->payment_method }}</span>
                                                                     </div>
                                                                 </div>
                                                                 <div class="col-lg-7 col-md-5 col-12">
@@ -321,6 +267,7 @@
                                                         style="display: none">
                                                     <li class="price"><button type="submit"
                                                             class="btn btn-primary">Buy</button></li>
+                                                        
                                                 </form>
                                             @endauth
 
@@ -337,17 +284,7 @@
                 </div>
                 <div class="row">
                     <div class="col-12">
-                        <!-- Pagination -->
-                        <div class="pagination left">
-                            <ul class="pagination-list">
-                                <li><a href="javascript:void(0)">1</a></li>
-                                <li class="active"><a href="javascript:void(0)">2</a></li>
-                                <li><a href="javascript:void(0)">3</a></li>
-                                <li><a href="javascript:void(0)">4</a></li>
-                                <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
-                            </ul>
-                        </div>
-                        <!--/ End Pagination -->
+                    
                     </div>
                 </div>
             </div>

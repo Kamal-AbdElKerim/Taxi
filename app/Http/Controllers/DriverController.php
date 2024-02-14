@@ -26,6 +26,8 @@ class DriverController extends Controller
         $route = route::all();
            
               $id =Auth()->id();
+              $user = user::where('user_id', $id)->first();
+
              $horaires = driver::join('routes', 'drivers.route_id', '=', 'routes.id')
           
             ->join('trips_of_drivers', 'trips_of_drivers.driver_id', '=', 'drivers.id')
@@ -40,7 +42,7 @@ class DriverController extends Controller
             //  dd($horaires);
 
            
-            return view("front.driver.profile_data",compact('route','horaires'));
+            return view("front.driver.profile_data",compact('route','horaires','user'));
      
     }
 

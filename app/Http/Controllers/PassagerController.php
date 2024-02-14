@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\reservation;
+use App\Models\user;
 use Illuminate\Http\Request;
 
 class PassagerController extends Controller
@@ -13,6 +14,7 @@ class PassagerController extends Controller
 
     public function Profile()  {
         $id = auth()->id();
+        $user = user::where('user_id', $id)->first();
 
         $reservation = Reservation::select(
             'reservations.reting',
@@ -37,6 +39,6 @@ class PassagerController extends Controller
         ->get();
     
         // dd($reservation);
-        return view('front.passager.myReservation',compact('reservation'));
+        return view('front.passager.myReservation',compact('reservation','user'));
     }
 }

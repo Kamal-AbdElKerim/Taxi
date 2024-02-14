@@ -115,13 +115,19 @@ padding: 8px 20px ;
                                         
                                  
                                     @if(auth()->user()->role !== 'driver')
-                                    <li class="nav-item">
-                                        <a class="active dd-menu collapsed" href="javascript:void(0)"
+                                    {{-- <li class="nav-item">
+                                        <a class="active dd-menu collapsed" href="{{ route('index_searche') }}"
                                             data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="Toggle navigation">{{ ' '.trans("Dashboard/main-Header_trans.Home") }}</a>
-                                    </li>
+                                    </li> --}}
                                    
+                                   
+                                    <li class="nav-item">
+                                       
+                                        
+                                        <a href="{{ route('index_searche') }}" aria-label="Toggle navigation">{{ ' '.trans("Dashboard/main-Header_trans.Home") }}</a>
+                                    </li>
                                     <li class="nav-item">
                                        
                                         
