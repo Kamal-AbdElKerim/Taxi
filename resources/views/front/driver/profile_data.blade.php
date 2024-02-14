@@ -16,13 +16,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">My Ads</h1>
+                        <h1 class="page-title">My Reserve</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
-                        <li><a href="index.html">Home</a></li>
-                        <li>My Ads</li>
+                        <li><a href="javascript:void(0)">Home</a></li>
+                        <li>My Reserve</li>
                     </ul>
                 </div>
             </div>
@@ -45,17 +45,11 @@
                         </div>
                         <div class="dashboard-menu">
                             <ul>
-                                <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
                                 <li><a href="{{ route('profile') }}"><i class="lni lni-pencil-alt"></i> Edit Profile</a>
                                 </li>
-                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Ads</a>
+                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Reserve</a>
                                 </li>
-                                <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
-                                <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
-                                <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
-                                <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> Close account</a></li>
-                                <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
+
                             </ul>
                             <div class="button">
                                 {{-- <a class="btn" href="javascript:void(0)">Logout</a> --}}
@@ -69,17 +63,8 @@
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
                         <div class="dashboard-block mt-0">
-                            <h3 class="block-title">My Ads</h3>
-                            <nav class="list-nav">
-                                <ul>
-                                    <li class="active"><a href="javascript:void(0)">All Ads <span>42</span></a></li>
-                                    <li><a href="javascript:void(0)">Published <span>88</span></a></li>
-                                    <li><a href="javascript:void(0)">Featured <span>12</span></a></li>
-                                    <li><a href="javascript:void(0)">Sold <span>02</span></a></li>
-                                    <li><a href="javascript:void(0)">Active <span>45</span></a></li>
-                                    <li><a href="javascript:void(0)">Expired <span>55</span></a></li>
-                                </ul>
-                            </nav>
+                            <h3 class="block-title">My Reserve</h3>
+                         
                             <!-- Start Items Area -->
                             <div class="my-items">
                                 <form action="{{ route('add_route') }}" method="POST" >
@@ -124,7 +109,7 @@
                                     <div class="row align-items-center">
                                         <div class="col-lg-5 col-md-5 col-12">
                                             <div class="item-image">
-                                                <img src="assets/images/my-items/my-item1.png" alt="#">
+                                                <img src="https://www.thoughtco.com/thmb/gKLmeBLUTBiDfmmQVidHhcBq0fE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-556712867-58e85b223df78c51620400d4.jpg" alt="#">
                                                 <div class="content">
                                                     <h3 class="title"><a href="javascript:void(0)">Total :{{ $item->num_reserv }}</a></h3>
                                                     <span class="price">status : {{ $item->status }}</span>
@@ -142,11 +127,11 @@
                                             <ul class="action-btn">
                                                 @if ($item->status === "En route")
 
-                                                <li><a href="{{ route('end_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>finish</a></li>
+                                                <li><a href="{{ route('end_travle',$item->horaire_id ) }}"><i class="fa-solid fa-plane-arrival fa-flip-horizontal"></i>Arrived</a></li>
                               
 
                                                 @else
-                                                <li><a href="{{ route('start_travle',$item->horaire_id ) }}"><i class="lni lni-trash"></i>go</a></li>
+                                                <li><a href="{{ route('start_travle',$item->horaire_id ) }}"><i class="fa-solid fa-plane-departure fa-flip-horizontal"></i>go</a></li>
                                                 @endif
                                             </ul>  
                                             @endif

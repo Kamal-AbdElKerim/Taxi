@@ -29,6 +29,53 @@
     <link rel="stylesheet" href="{{URL::asset('front/assets/css/main.css')}}" />
 
     @yield('style')
+    <style>
+        .card {
+max-width: 20rem;
+background: #fff;
+margin: 0 1rem;
+padding: 1rem;
+box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+width: 100%;
+border-radius: 0.5rem;
+}
+
+.star {
+font-size: 5vh;
+cursor: pointer;
+}
+
+.one {
+color: rgb(255, 0, 0);
+}
+
+.two {
+color: rgb(255, 106, 0);
+}
+
+.three {
+
+color: rgb(149, 228, 12);
+
+}
+
+.four {
+color: rgb(105, 187, 12);
+}
+
+.five {
+color: rgb(24, 159, 14);
+}
+
+
+.disabled{
+
+padding: 8px 20px ;
+/* margin: 4px; */
+
+}
+
+</style>
 
 </head>
 
@@ -64,17 +111,24 @@
                             </button>
                             <div class="collapse navbar-collapse sub-menu-bar" id="navbarSupportedContent">
                                 <ul id="nav" class="navbar-nav ms-auto">
+                                    @auth
+                                        
+                                 
+                                    @if(auth()->user()->role !== 'driver')
                                     <li class="nav-item">
                                         <a class="active dd-menu collapsed" href="javascript:void(0)"
                                             data-bs-toggle="collapse" data-bs-target="#submenu-1-1"
                                             aria-controls="navbarSupportedContent" aria-expanded="false"
                                             aria-label="Toggle navigation">{{ ' '.trans("Dashboard/main-Header_trans.Home") }}</a>
                                     </li>
+                                   
                                     <li class="nav-item">
                                        
                                         
                                         <a href="{{ route('Profile') }}" aria-label="Toggle navigation">Profile</a>
                                     </li>
+                                    @endif
+                                    @endauth
                                     <li class="nav-item">
                                        
                                       

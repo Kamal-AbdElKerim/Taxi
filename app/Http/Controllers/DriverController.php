@@ -87,6 +87,7 @@ class DriverController extends Controller
     public function profile() {
         $id = auth()->id();
         $driver = Driver::where('user_id', $id)->first();
+        $user = user::where('user_id', $id)->first();
         if (!$driver) {
             // dd($id);
 
@@ -98,9 +99,9 @@ class DriverController extends Controller
         }
         
         $profile = $driver->taxi;
-       
-        
-        return view('front.driver.profile_edit', compact('profile'));
+      
+        // dd($user);
+        return view('front.driver.profile_edit', compact('profile','user'));
     }
     
     

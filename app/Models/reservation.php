@@ -14,6 +14,6 @@ class reservation extends Model
         'horaire_id',
         'driver_id',
         'route_id',
-        'cancelled',
+        'reting',
     ];
 }

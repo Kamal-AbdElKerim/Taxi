@@ -52,6 +52,8 @@ Route::group(
         Route::middleware(['auth', 'checkRole:driver'])->group(function () {
             
             Route::get('/dashboard', [DriverController::class, 'dashboard'])->name('dashboard');
+                  Route::get('/home_driver', [DriverController::class, 'index'])->name('dashboard_driver');
+
             Route::get('/start_travle/{id}', [DriverController::class, 'start_travle'])->name('start_travle');
             Route::get('/end_travle/{id}', [DriverController::class, 'end_travle'])->name('end_travle');
 

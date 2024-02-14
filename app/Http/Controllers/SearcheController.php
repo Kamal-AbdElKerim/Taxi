@@ -6,8 +6,9 @@ use App\Models\route;
 use App\Models\driver;
 use App\Models\horaire;
 use App\Models\reservation;
-use App\Models\trips_of_driver;
 use Illuminate\Http\Request;
+use App\Models\trips_of_driver;
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class SearcheController extends Controller
@@ -46,13 +47,27 @@ class SearcheController extends Controller
         ->join('users', 'drivers.user_id', '=', 'users.user_id')
         ->join('trips_of_drivers', 'drivers.id', '=', 'trips_of_drivers.driver_id')
         ->join('horaires', 'trips_of_drivers.horaire_id', '=', 'horaires.id')
-        ->select('routes.start_city', 'routes.end_city','routes.id as routes_id', 'users.name', 'horaires.date', 'horaires.id', 'drivers.id AS driver_id')
+        ->leftJoin('reviews', 'reviews.driver_R_id', '=', 'drivers.id')
+        ->select(
+            'routes.start_city', 
+            'routes.end_city', 
+            'routes.id as routes_id', 
+            'users.name', 
+            'horaires.date', 
+            'horaires.id', 
+            'drivers.id AS driver_id', 
+            DB::raw('SUM(reviews.rating) AS num_reviews'), 
+            DB::raw('COUNT(reviews.driver_R_id) AS All_reviews')
+        )
         ->where('routes.start_city', $credentials['start_city'])
         ->where('routes.end_city', $credentials['end_city'])
         ->where('trips_of_drivers.num_reserv', '<=', 4)
+         ->groupBy('routes.start_city', 'routes.end_city', 'routes.id', 'users.name', 'horaires.date', 'horaires.id', 'drivers.id')
         ->get();
+    
+    
 
-    //  dd($routes);
+    //    dd($routes);
    
 
         if ($routes) {

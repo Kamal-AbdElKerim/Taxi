@@ -71,7 +71,7 @@ class AuthenticatedSessionController extends Controller
                 return redirect()->intended('/dashboard_admin');
             } elseif ($user->role === 'driver') {
                 session()->flash('login_success');
-                return redirect()->intended('/home_driver');
+                return redirect()->intended('/profile_edit');
             } elseif ($user->role === 'Passager') {
                 session()->flash('login_success');
                 return redirect()->intended('/');

@@ -5534,7 +5534,7 @@ blockquote .shape {
 .my-items .single-item-list .item-image img {
   position: absolute;
   left: 0;
-  top: 0;
+  top: -15;
   height: 60px;
   width: 60px;
   border-radius: 3px;

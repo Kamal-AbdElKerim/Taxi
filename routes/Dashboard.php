@@ -28,7 +28,6 @@ Route::group(
 
 
     Route::middleware('auth')->group(function () {
-      Route::get('/home_driver', [DriverController::class, 'index'])->name('dashboard_driver');
 
 
       Route::get('/profile_edit', [DriverController::class, 'profile'])->name('profile');

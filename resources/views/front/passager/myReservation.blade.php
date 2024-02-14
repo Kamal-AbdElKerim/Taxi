@@ -3,53 +3,7 @@
     Profile
 @endsection
 @section('style')
-    <style>
-            .card {
-  max-width: 20rem;
-  background: #fff;
-  margin: 0 1rem;
-  padding: 1rem;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
-  width: 100%;
-  border-radius: 0.5rem;
-}
- 
-.star {
-  font-size: 5vh;
-  cursor: pointer;
-}
- 
-.one {
-  color: rgb(255, 0, 0);
-}
- 
-.two {
-  color: rgb(255, 106, 0);
-}
- 
-.three {
- 
-  color: rgb(149, 228, 12);
 
-}
- 
-.four {
-    color: rgb(105, 187, 12);
-}
- 
-.five {
-  color: rgb(24, 159, 14);
-}
-
-
-.disabled{
-  
-    padding: 8px 20px ;
-    /* margin: 4px; */
-  
-}
-
-    </style>
 @endsection
 
 
@@ -61,13 +15,13 @@
             <div class="row align-items-center">
                 <div class="col-lg-6 col-md-6 col-12">
                     <div class="breadcrumbs-content">
-                        <h1 class="page-title">My Ads</h1>
+                        <h1 class="page-title">My Reserve</h1>
                     </div>
                 </div>
                 <div class="col-lg-6 col-md-6 col-12">
                     <ul class="breadcrumb-nav">
                         <li><a href="index.html">Home</a></li>
-                        <li>My Ads</li>
+                        <li>My Reserve</li>
                     </ul>
                 </div>
             </div>
@@ -93,7 +47,7 @@
                                 <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
                                 <li><a href="profile-settings.html"><i class="lni lni-pencil-alt"></i> Edit Profile</a>
                                 </li>
-                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Ads</a>
+                                <li><a class="active" href="my-items.html"><i class="lni lni-bolt-alt"></i> My Reserve</a>
                                 </li>
                                 <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
                                 <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
@@ -112,7 +66,7 @@
                 <div class="col-lg-9 col-md-12 col-12">
                     <div class="main-content">
                         <div class="dashboard-block mt-0">
-                            <h3 class="block-title">My Ads</h3>
+                            <h3 class="block-title">My Reserve</h3>
                             <nav class="list-nav">
                                 <ul>
                                     <li class="active"><a href="javascript:void(0)">All Ads <span>42</span></a></li>
@@ -170,10 +124,12 @@
                                                 @if ($item->start_time === null)
                                                 <li><a href="{{ route('delete_reserv',$item->horaire_id ) }}"><i class="lni lni-trash"></i></a></li>
                                                 @elseif($item->end_time !== null)
+                                                @if ($item->reting == 0)
                                                 <form action="{{ route('add_rating',$item->horaire_id) }}" method="post">
                                                     @csrf
                                                 <div class="" id="f_star">
-                                                    {{-- <input class="form-control" type="text" name="comment" placeholder="add comment"> --}}
+                                                    <input class="form-control" type="text" value="{{ $item->driver_id }}" name="driver_id" placeholder="" style="display: none">
+                                                    <input class="form-control" type="text" value="{{ $item->reservations_id }}" name="reservations_id" placeholder="" style="display: none">
                                                     <textarea name="comment" placeholder="add comment"  cols="25" rows="2"></textarea>
                                                     <span onclick="gfg(1)" class="star">★</span>
                                                     <span onclick="gfg(2)" class="star">★</span>
@@ -184,7 +140,9 @@
                                                  <button type="submit"  class="btn btn-primary" >done</button>
                                                 </div> 
                                             </form>
-
+                                            @else
+                                            <p class=" text-success ">done</p>
+                                            @endif
                                                 @endif
                                             </ul>
                                         </div>

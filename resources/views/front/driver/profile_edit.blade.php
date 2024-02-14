@@ -38,26 +38,20 @@
                     <!-- Start Dashboard Sidebar -->
                     <div class="dashboard-sidebar">
                         <div class="user-image">
-                            <img src="assets/images/dashboard/user-image.jpg" alt="#">
-                            <h3>Steve Aldridge
-                                <span><a href="javascript:void(0)">@username</a></span>
+                            <img src="{{ asset('images/' . $user['image']) }}" alt="#">
+                            <h3>{{ $user['name'] }}
+                                <span><a href="javascript:void(0)">{{ Str::limit($user['email'], 20) }}</a></span>
                             </h3>
                         </div>
                         <div class="dashboard-menu">
                             <ul>
-                                <li><a href="dashboard.html"><i class="lni lni-dashboard"></i> Dashboard</a></li>
                                 <li><a class="active" href="{{ route('profile') }}"><i class="lni lni-pencil-alt"></i>
                                         Edit Profile</a></li>
                                 <li><a href="{{ route('dashboard_driver') }}"><i class="lni lni-bolt-alt"></i> My Ads</a></li>
-                                <li><a href="favourite-items.html"><i class="lni lni-heart"></i> Favourite ads</a></li>
-                                <li><a href="post-item.html"><i class="lni lni-circle-plus"></i> Post An Ad</a></li>
-                                <li><a href="bookmarked-items.html"><i class="lni lni-bookmark"></i> Bookmarked</a></li>
-                                <li><a href="messages.html"><i class="lni lni-envelope"></i> Messages</a></li>
-                                <li><a href="delete-account.html"><i class="lni lni-trash"></i> Close account</a></li>
-                                <li><a href="invoice.html"><i class="lni lni-printer"></i> Invoice</a></li>
+                             
                             </ul>
                             <div class="button">
-                                <a class="btn" href="javascript:void(0)">Logout</a>
+                                <a class="btn" href="javascript:void(0)">{{ trans("Dashboard/main-Header_trans.sign_out") }}</a>
                             </div>
                         </div>
                     </div>
@@ -70,7 +64,7 @@
                             <h3 class="block-title">Profile Settings</h3>
                             <div class="inner-block">
                                 <div class="image">
-                                    <img src="assets/images/dashboard/user-image.jpg" alt="#">
+                                    <img src="{{ asset('images/' . $user['image']) }}" alt="#">
                                 </div>
                                 <form class="profile-setting-form" method="post" action="{{ route('Store_profile') }}">
                                     @csrf
@@ -129,7 +123,7 @@
                             </div>
                         </div>
                         <!-- End Profile Settings Area -->
-                        <!-- Start Password Change Area -->
+                        {{-- <!-- Start Password Change Area -->
                         <div class="dashboard-block password-change-block">
                             <h3 class="block-title">Change Password</h3>
                             <div class="inner-block">
@@ -165,7 +159,7 @@
                                 </form>
                             </div>
                         </div>
-                        <!-- End Password Change Area -->
+                        <!-- End Password Change Area --> --}}
                     </div>
                 </div>
             </div>

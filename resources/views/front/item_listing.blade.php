@@ -49,22 +49,27 @@
                             <h3>All Categories</h3>
                             <ul class="list">
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-dinner"></i> Hotel & Travels<span>15</span></a>
+                                    <a href="javascript:void(0)"><i class="lni lni-dinner"></i> Hotel &
+                                        Travels<span>15</span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-control-panel"></i> Services <span>20</span></a>
+                                    <a href="javascript:void(0)"><i class="lni lni-control-panel"></i> Services
+                                        <span>20</span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-bullhorn"></i> Marketing <span>55</span></a>
+                                    <a href="javascript:void(0)"><i class="lni lni-bullhorn"></i> Marketing
+                                        <span>55</span></a>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-home"></i> Real Estate<span>35</span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-bolt"></i> Electronics <span>60</span></a>
+                                    <a href="javascript:void(0)"><i class="lni lni-bolt"></i> Electronics
+                                        <span>60</span></a>
                                 </li>
                                 <li>
-                                    <a href="javascript:void(0)"><i class="lni lni-tshirt"></i> Dress & Clothing <span>55</span></a>
+                                    <a href="javascript:void(0)"><i class="lni lni-tshirt"></i> Dress & Clothing
+                                        <span>55</span></a>
                                 </li>
                                 <li>
                                     <a href="javascript:void(0)"><i class="lni lni-diamond-alt"></i> Jewelry & Accessories
@@ -76,8 +81,8 @@
                         <!-- Start Single Widget -->
                         <div class="single-widget range">
                             <h3>Price Range</h3>
-                            <input type="range" class="form-range" name="range" step="1" min="100" max="10000"
-                                value="10" onchange="rangePrimary.value=value">
+                            <input type="range" class="form-range" name="range" step="1" min="100"
+                                max="10000" value="10" onchange="rangePrimary.value=value">
                             <div class="range-inner">
                                 <label>$</label>
                                 <input type="text" id="rangePrimary" placeholder="100" />
@@ -117,13 +122,13 @@
                         <!-- End Single Widget -->
                     </div>
                 </div>
-              
+
                 <div class="col-lg-9 col-md-8 col-12">
                     @if (session('success'))
-                    <div class="alert alert-success">
-                        {{ session('success') }}
-                    </div>
-                @endif
+                        <div class="alert alert-success">
+                            {{ session('success') }}
+                        </div>
+                    @endif
                     <div class="category-grid-list">
                         <div class="row">
                             <div class="col-12">
@@ -139,100 +144,219 @@
                                                         data-bs-target="#nav-grid" type="button" role="tab"
                                                         aria-controls="nav-grid" aria-selected="false"><i
                                                             class="lni lni-grid-alt"></i></button>
-                                                    <button class="nav-link active" id="nav-list-tab"
-                                                        data-bs-toggle="tab" data-bs-target="#nav-list" type="button"
-                                                        role="tab" aria-controls="nav-list" aria-selected="true"><i
+                                                    <button class="nav-link active" id="nav-list-tab" data-bs-toggle="tab"
+                                                        data-bs-target="#nav-list" type="button" role="tab"
+                                                        aria-controls="nav-list" aria-selected="true"><i
                                                             class="lni lni-list"></i></button>
                                                 </div>
                                             </nav>
                                         </div>
                                     </div>
                                 </div>
-                                
+
                                 <div class="tab-content" id="nav-tabContent">
-                                  
+
                                     <div class="tab-pane fade show active" id="nav-list" role="tabpanel"
                                         aria-labelledby="nav-list-tab">
                                         <div class="row">
-                                            
+
                                             @foreach ($results as $item)
-                                                
-                                            <div class="col-lg-12 col-md-12 col-12">
-                                                <!-- Start Single Item -->
-                                                <div class="single-item-grid">
-                                                    <div class="row align-items-center">
-                                                        <div class="col-lg-5 col-md-7 col-12">
-                                                            <div class="image">
-                                                                <a href="javascript:void(0)"><img src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"  height="240px" alt="#"></a>
-                                                                <i class=" cross-badge lni lni-bolt"></i>
-                                                                <span class="flat-badge sale">Sale</span>
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-lg-7 col-md-5 col-12">
-                                                            <div class="content">
-                                                                <div class=" d-flex  justify-content-between ">
-                                                                <a href="javascript:void(0)" class="tag">driver : {{ $item->name }}</a>
-                                                                <a href="javascript:void(0)" class="tag">{{ $item->date }}</a>
-                                                            </div>
-                                                                <h3 class="title">
-                                                                    <a href="javascript:void(0)"><i
-                                                                        class="lni lni-map-marker">
-                                                                    </i>{{ $item->start_city }}</a>
-                                                                </h3>
-                                                                <h3 class="title">
-                                                                    <a href="javascript:void(0)"><i
-                                                                        class="lni lni-map-marker">
-                                                                    </i>{{ $item->end_city }}</a>
-                                                                </h3>
-                                                                {{-- <p class="location"><a href="javascript:void(0)"><i
-                                                                            class="lni lni-map-marker">
-                                                                        </i>{{ $item->end_city }}</a></p> --}}
-                                                                <ul class="info">
-                                                                    @auth
-                                                                        
-                                                                
-                                                                  
-                                                                        <form action="{{ route('add_reservation') }}" method="post">
-                                                                            @csrf
-                                                                            <input type="text"  name="horaire_id" value="{{ $item->id }}" style="display: none">
-                                                                            <input type="text"  name="routes_id" value="{{ $item->routes_id }}" style="display: none">
-                                                                            <input type="text"  name="driver_id" value="{{ $item->driver_id }}" style="display: none">
-                                                                        <li class="price"><button type="submit" class="btn btn-primary">Buy</button></li>
-                                                                    </form>
-                                                                    @endauth
-                                                              
-                                                                </ul>
-                                                            </div>
-                                                        </div>
+                                                @if ($item->start_city !== null)
+                                                    <div class="col-lg-12 col-md-12 col-12">
+                                                        <!-- Start Single Item -->
+                                                        <div class="single-item-grid">
+                                                            <div class="row align-items-center">
+                                                                <div class="col-lg-5 col-md-7 col-12">
+                                                                    <div class="image">
+                                                                        <a href="javascript:void(0)"><img
+                                                                                src="https://images.unsplash.com/photo-1556122071-e404eaedb77f?q=80&w=2034&auto=format&fit=crop&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
+                                                                                height="240px" alt="#"></a>
+                                                                        <i class=" cross-badge lni lni-bolt"></i>
+                                                                        <span class="flat-badge sale">Sale</span>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="col-lg-7 col-md-5 col-12">
+                                                                    <div class="content">
+                                                                        <div class=" d-flex  justify-content-between ">
+                                                                            <?php $total = $item->All_reviews != 0 ? $item->num_reviews / $item->All_reviews : 0;
+                                                                            ?>
+                                                                            <a href="javascript:void(0)"
+                                                                                class="tag">driver : {{ $item->name }}
+                                                                                @if ($total != 0)
+                                                                                    @if (round($total) == 1)
+                                                                                        <div class="star-rating">
+                                                                                            <span style="font-size: 3vh"
+                                                                                                onclick=""
+                                                                                                class="one">★</span>
+                                                                                            <span style="font-size: 3vh"
+                                                                                                onclick=""
+                                                                                                class="">★</span>
+                                                                                            <span style="font-size: 3vh"
+                                                                                                onclick=""
+                                                                                                class="">★</span>
+                                                                                            <span style="font-size: 3vh"
+                                                                                                onclick=""
+                                                                                                class="">★</span>
+                                                                                            <span style="font-size: 3vh"
+                                                                                                onclick=""
+                                                                                                class="">★</span>
+                                                                                            <span>
+                                                                                                <h6>({{ $item->All_reviews }}
+                                                                                                    Ratings)</h6>
+                                                                                            </span>
+                                                                                        </div>
+                                                                            </a>
+                                                @endif
+                                                @if (round($total) == 2)
+                                                    <div class="star-rating">
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="two">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="two">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span>
+                                                            <h6>({{ $item->All_reviews }} Ratings)</h6>
+                                                        </span>
                                                     </div>
+                                                    </a>
+                                                @endif
+                                                @if (round($total) == 3)
+                                                    <div class="star-rating">
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="three">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="three">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="three">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span>
+                                                            <h6>({{ $item->All_reviews }} Ratings)</h6>
+                                                        </span>
+                                                    </div>
+                                                    </a>
+                                                @endif
+                                                @if (round($total) == 4)
+                                                    <div class="star-rating">
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="four">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="four">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="four">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="four">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="">★</span>
+                                                        <span>
+                                                            <h6>({{ $item->All_reviews }} Ratings)</h6>
+                                                        </span>
+                                                    </div>
+                                                    </a>
+                                                @endif
+                                                @if (round($total) == 5)
+                                                    <div class="star-rating">
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="five">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="five">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="five">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="five">★</span>
+                                                        <span style="font-size: 3vh" onclick=""
+                                                            class="five">★</span>
+                                                        <span>
+                                                            <h6>({{ $item->All_reviews }} Ratings)</h6>
+                                                        </span>
+                                                    </div>
+                                                    </a>
+                                                @endif
+                                            @else
+                                                <div class="star-rating">
+                                                    <span style="font-size: 3vh" onclick="" class="">★</span>
+                                                    <span style="font-size: 3vh" onclick="" class="">★</span>
+                                                    <span style="font-size: 3vh" onclick="" class="">★</span>
+                                                    <span style="font-size: 3vh" onclick="" class="">★</span>
+                                                    <span style="font-size: 3vh" onclick="" class="">★</span>
+                                                    <span>
+                                                        <h6>({{ $item->All_reviews }} Ratings)</h6>
+                                                    </span>
                                                 </div>
-                                                <!-- End Single Item -->
-                                            </div>
-                                            @endforeach
-                                     
+                                                </a>
+                                            @endif
+                                            </a>
+                                            <a href="javascript:void(0)" class="tag">{{ $item->date }}</a>
                                         </div>
-                                        <div class="row">
-                                            <div class="col-12">
-                                                <!-- Pagination -->
-                                                <div class="pagination left">
-                                                    <ul class="pagination-list">
-                                                        <li><a href="javascript:void(0)">1</a></li>
-                                                        <li class="active"><a href="javascript:void(0)">2</a></li>
-                                                        <li><a href="javascript:void(0)">3</a></li>
-                                                        <li><a href="javascript:void(0)">4</a></li>
-                                                        <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
-                                                    </ul>
-                                                </div>
-                                                <!--/ End Pagination -->
-                                            </div>
-                                        </div>
+                                        <h3 class="title">
+                                            <a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                                </i>{{ $item->start_city }}</a>
+                                        </h3>
+                                        <h3 class="title">
+                                            <a href="javascript:void(0)"><i class="lni lni-map-marker">
+                                                </i>{{ $item->end_city }}</a>
+                                        </h3>
+                                        {{-- <p class="location"><a href="javascript:void(0)"><i
+                                    class="lni lni-map-marker">
+                                </i>{{ $item->end_city }}</a></p> --}}
+                                        <ul class="info">
+                                            @auth
+
+
+
+                                                <form action="{{ route('add_reservation') }}" method="post">
+                                                    @csrf
+                                                    <input type="text" name="horaire_id" value="{{ $item->id }}"
+                                                        style="display: none">
+                                                    <input type="text" name="routes_id" value="{{ $item->routes_id }}"
+                                                        style="display: none">
+                                                    <input type="text" name="driver_id" value="{{ $item->driver_id }}"
+                                                        style="display: none">
+                                                    <li class="price"><button type="submit"
+                                                            class="btn btn-primary">Buy</button></li>
+                                                </form>
+                                            @endauth
+
+                                        </ul>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                        <!-- End Single Item -->
+                    </div>
+                    @endif
+                    @endforeach
+
+                </div>
+                <div class="row">
+                    <div class="col-12">
+                        <!-- Pagination -->
+                        <div class="pagination left">
+                            <ul class="pagination-list">
+                                <li><a href="javascript:void(0)">1</a></li>
+                                <li class="active"><a href="javascript:void(0)">2</a></li>
+                                <li><a href="javascript:void(0)">3</a></li>
+                                <li><a href="javascript:void(0)">4</a></li>
+                                <li><a href="javascript:void(0)"><i class="lni lni-chevron-right"></i></a></li>
+                            </ul>
+                        </div>
+                        <!--/ End Pagination -->
                     </div>
                 </div>
             </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
+        </div>
         </div>
     </section>
     <!-- End Items Listing List -->
@@ -265,13 +389,12 @@
     </div>
     <!-- End Newsletter Area -->
 
-   
-  
 
 
 
-    @endsection
 
-    @section('script')
-        
-    @endsection
+
+@endsection
+
+@section('script')
+@endsection
