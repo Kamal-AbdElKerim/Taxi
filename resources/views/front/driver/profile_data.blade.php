@@ -145,6 +145,58 @@
                             </div>
                             <!-- End Items Area -->
                         </div>
+                    <div class="main-content">
+                        <div class="dashboard-block mt-0">
+                            <h3 class="block-title">history Trajets</h3>
+                         
+                            <!-- Start Items Area -->
+                            <div class="my-items">
+                          
+                        
+                                @foreach ($reservations as $item)
+                                    
+                              
+                                <!-- Start Single List -->
+                                <div class="single-item-list">
+                                    <div class="row align-items-center">
+                                        <div class="col-lg-5 col-md-5 col-12">
+                                            <div class="item-image">
+                                                <img src="https://www.thoughtco.com/thmb/gKLmeBLUTBiDfmmQVidHhcBq0fE=/1500x0/filters:no_upscale():max_bytes(150000):strip_icc():format(webp)/GettyImages-556712867-58e85b223df78c51620400d4.jpg" alt="#">
+                                                <div class="content">
+                                                    <h3 class="title"><a href="javascript:void(0)">Total :{{ $item->num_reserv }}</a></h3>
+                                                    <span class="price">status : {{ $item->status }}</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-12">
+                                            <p>{{ $item->start_city }}</p>
+                                        </div>
+                                        <div class="col-lg-2 col-md-2 col-12">
+                                            <p>{{ $item->end_city }}</p>
+                                        </div>
+                                        <div class="col-lg-3 col-md-3 col-12 align-right">
+                                            @if ($item->num_reserv == 5)
+                                            <ul class="action-btn">
+                                                @if ($item->status === "En route")
+
+                                                <li><a href="{{ route('end_travle',$item->horaire_id ) }}"><i class="fa-solid fa-plane-arrival fa-flip-horizontal"></i>Arrived</a></li>
+                              
+
+                                                @else
+                                                <li><a href="{{ route('start_travle',$item->horaire_id ) }}"><i class="fa-solid fa-plane-departure fa-flip-horizontal"></i>go</a></li>
+                                                @endif
+                                            </ul>  
+                                            @endif
+                                          
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Single List -->
+                                @endforeach
+                       
+                            </div>
+                            <!-- End Items Area -->
+                        </div>
                     </div>
                 </div>
             </div>

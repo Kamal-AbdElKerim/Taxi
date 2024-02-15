@@ -104,10 +104,8 @@ class SearcheController extends Controller
 
         // dd($routes);
     
-        if ($routes->isNotEmpty()) {
+    
             return view('front.item_listing', ['results' => $routes]);
-        } else {
-            return redirect()->back()->with('error', 'Search results not found in session.');
-        }
+     
     }
 }

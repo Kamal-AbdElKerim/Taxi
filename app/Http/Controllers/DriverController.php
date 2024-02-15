@@ -39,10 +39,23 @@ class DriverController extends Controller
             
               ->get();
 
-            //  dd($horaires);
+              $reservations = Reservation::join('drivers', 'reservations.driver_id', '=', 'drivers.id')
+                  ->join('users', 'drivers.user_id', '=', 'users.user_id')
+                  ->join('routes', 'routes.id', '=', 'reservations.route_id')
+                  ->join('trips_of_drivers', 'drivers.id', '=', 'trips_of_drivers.driver_id')
+                  ->join('horaires', 'horaires.id', '=', 'trips_of_drivers.horaire_id')
+                  ->select('reservations.*','routes.start_city','routes.end_city')
+                  ->where('users.user_id', $id)
+                  ->where('trips_of_drivers.num_reserv', 5)
+                  ->groupBy('reservations.horaire_id')
+                  ->orderByDesc('reservations.created_at')
+                  ->get();
+              
+            //  dd($reservations);
+       
 
            
-            return view("front.driver.profile_data",compact('route','horaires','user'));
+            return view("front.driver.profile_data",compact('route','horaires','user','reservations'));
      
     }
 
