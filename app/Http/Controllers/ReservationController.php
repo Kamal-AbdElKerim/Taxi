@@ -18,8 +18,15 @@ class ReservationController extends Controller
 
     }
     // dd($request->routes_id);
+    if (isset($request->user_id)) {
+      $id =$request->user_id ;
+    }else{
+      $id =auth()->id() ;
+
+    }
+    
      reservation::create([
-        'user_id' => auth()->id() ,
+        'user_id' => $id ,
         'horaire_id' => $request->horaire_id ,
         'driver_id' =>  $request->driver_id  ,
         'route_id' =>  $request->routes_id  ,

@@ -75,9 +75,7 @@
         <form action="{{ route('search_forrm') }}" method="post">
             @csrf
         <div class="row">
-       
-          
-         
+
             <div class="col-lg-3 col-md-3 col-12 p-0">
                 <div class="search-input">
                     <label for="location"><i class="lni lni-map-marker theme-color"></i></label>

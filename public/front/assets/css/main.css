@@ -4858,11 +4858,11 @@ blockquote .shape {
   margin-top: 2px;
 }
 
-.dashboard .main-content .activity-log ul li .remove {
+.dashboard .main-content .activity-log ul li .remove ,.dashboard .main-content .activity-log ul li .restore {
   display: block;
 }
 
-.dashboard .main-content .activity-log ul li .remove a {
+.dashboard .main-content .activity-log ul li .remove a ,.dashboard .main-content .activity-log ul li .restore a {
   position: absolute;
   right: 30px;
   top: 50%;
@@ -4880,12 +4880,30 @@ blockquote .shape {
   border-radius: 3px;
 }
 
-.dashboard .main-content .activity-log ul li .remove a:hover {
+.dashboard .main-content .activity-log ul li .restore a {
+  position: absolute;
+  right: 30px;
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+          transform: translateY(-50%);
+  height: 15px;
+  width: 15px;
+  line-height: 15px;
+  background: #10f400;
+  color: #fff;
+  font-size: 10px;
+  text-align: center;
+  opacity: 0;
+  visibility: hidden;
+  border-radius: 3px;
+}
+
+.dashboard .main-content .activity-log ul li .remove a:hover ,.dashboard .main-content .activity-log ul li .restore a:hover {
   color: #fff;
   background: #081828;
 }
 
-.dashboard .main-content .activity-log ul li:hover .remove a {
+.dashboard .main-content .activity-log ul li:hover .remove a ,.dashboard .main-content .activity-log ul li:hover .restore a {
   opacity: 1;
   visibility: visible;
 }
@@ -4942,11 +4960,11 @@ blockquote .shape {
   color: #888;
 }
 
-.dashboard .main-content .recent-items ul li .remove {
+.dashboard .main-content .recent-items ul li .remove ,.dashboard .main-content .activity-log ul li .restore {
   display: block;
 }
 
-.dashboard .main-content .recent-items ul li .remove a {
+.dashboard .main-content .recent-items ul li .remove a  {
   position: absolute;
   right: 30px;
   top: 50%;
@@ -4964,12 +4982,12 @@ blockquote .shape {
   border-radius: 3px;
 }
 
-.dashboard .main-content .recent-items ul li .remove a:hover {
+.dashboard .main-content .recent-items ul li .remove a:hover ,.dashboard .main-content .activity-log ul li .restore a:hover {
   color: #fff;
   background: #081828;
 }
 
-.dashboard .main-content .recent-items ul li:hover .remove a {
+.dashboard .main-content .recent-items ul li:hover .remove a ,.dashboard .main-content .recent-items ul li:hover .restore a  {
   opacity: 1;
   visibility: visible;
 }

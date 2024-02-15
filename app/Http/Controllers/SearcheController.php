@@ -27,9 +27,13 @@ class SearcheController extends Controller
             ->selectRaw('MAX(nbr) AS max_nbr, horaire_id')
             ->first();
             $reservation =  reservation::where('horaire_id',$maxNbr->horaire_id)->first();
-            $route =  route::where('id',$reservation->route_id)->first();
-            // dd($route);
-            return view('front.index',compact('citys','route'));
+            if (isset($reservation->route_id)) {
+                $route =  route::where('id',$reservation->route_id)->first();
+                // dd($route);
+                return view('front.index',compact('citys','route'));
+            }
+          
+            return view('front.index',compact('citys'));
 
         }
       

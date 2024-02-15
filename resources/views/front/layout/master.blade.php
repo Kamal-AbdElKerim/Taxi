@@ -114,7 +114,7 @@ padding: 8px 20px ;
                                     @auth
                                         
                                  
-                                    @if(auth()->user()->role !== 'driver')
+                                    @if(auth()->user()->role !== 'driver' && auth()->user()->role !== 'admin' )
                                     {{-- <li class="nav-item">
                                         <a class="active dd-menu collapsed" href="{{ route('index_searche') }}"
                                             data-bs-toggle="collapse" data-bs-target="#submenu-1-1"

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewsController;
@@ -43,9 +44,23 @@ Route::group(
 
         Route::middleware(['auth', 'checkRole:admin'])->group(function () {
             
-            Route::get('/dashboard_admin', function () {
-                return view('Dashboard.admin.index');
-            })->name('dashboard_admin');
+            Route::get('/dashboard_admin', [AdminController::class, 'dashboard'])->name('dashboard_admin');
+            Route::get('/delete_Passager/{id}', [AdminController::class, 'delete_Passager'])->name('delete_Passager');
+            Route::get('/restore_Passager/{id}', [AdminController::class, 'restore_Passager'])->name('restore_Passager');
+
+            Route::get('/delete_driver/{id}', [AdminController::class, 'delete_driver'])->name('delete_driver');
+            Route::get('/restore_driver/{id}', [AdminController::class, 'restore_driver'])->name('restore_driver');
+
+            Route::get('/form_add_passeger', [AdminController::class, 'form_add_passeger'])->name('form_add_passeger');
+            Route::post('/store_register_passager', [AdminController::class, 'store_register_passager'])->name('store_register_passager');
+
+            Route::get('/reserv_passeger/{id}', [AdminController::class, 'reserv_passeger'])->name('reserv_passeger');
+            Route::post('/search_forrm_passeger', [AdminController::class, 'search_forrm_passeger'])->name('search_forrm_passeger');
+            Route::get('/affiche_card_passeger', [AdminController::class, 'affiche_card_passeger'])->name('affiche_card_passeger');
+
+
+
+
             
         });
         

@@ -21,7 +21,10 @@ return new class extends Migration
             $table->string('role')->default('Passager'); // Default role can be 'user' or any other role you prefer
             $table->string('image');
             $table->rememberToken();
+       
             $table->timestamps();
+
+
         });
     }
 
